@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Values from 'values.js'
+import Box from './Box';
 
 // log(color.tint(25))
 // //> { rgb: [64, 179, 255], alpha: 1, type: "tint", weight: 25, ...methods }
@@ -29,16 +30,6 @@ import Values from 'values.js'
 //   rgbString: ƒ rgbString()
 //   getBrightness: ƒ getBrightness()
 // }
-
-function Box({color}) {
-    return (
-        <div style={{
-            width: '100px',
-            height: '100px',
-            backgroundColor: color,
-        }} />
-    )
-}
 
 function ValuesContainer({color, variant = 'shades', weight = 10}) {
     const [status, setStatus] = useState('idle');
@@ -70,7 +61,7 @@ function ValuesContainer({color, variant = 'shades', weight = 10}) {
         <ul style={{ display: 'flex', listStyle: 'none' }}>
             {shades.map(shade => (
                 <Box
-                    key={shade.weight}
+                    key={`Values-${shade.weight}`}
                     color={`rgb(${shade.rgb.toString()})`}
                 />
             ))}

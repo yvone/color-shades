@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import ColorPicker from './ColorPicker';
 import ValuesContainer from './Values';
+import Shades from './Shades';
 import './App.css';
 
 const variants = ['shades', 'tints'];
@@ -60,6 +61,8 @@ function App() {
         variant={variant}
         weight={weight}
       />
+
+      <Shades color={color} />
     </div>
   );
 }
