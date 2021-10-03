@@ -1,23 +1,65 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
+import ColorPicker from './ColorPicker';
+import ValuesContainer from './Values';
 import './App.css';
 
+const variants = ['shades', 'tints'];
+
 function App() {
+  const [color, setColor] = useState('black');
+  const [variant, setVariant] = useState('shades');
+  const [weight, setWeight] = useState(10);
+
+  function handleChangeVariant(event) {
+    setVariant(event.target.name);
+  }
+
+  function handleChangeWeight(event) {
+    setWeight(Number(event.target.value));
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ColorPicker
+        color={color}
+        setColor={setColor}
+      />
+
+      <p>Variant:</p>
+      {variants.map(variantOpt => {
+        let isChecked = variantOpt === variant;
+        return (
+          <div key={variantOpt}>
+            <input
+              type="radio"
+              id={variantOpt}
+              name={variantOpt}
+              value={variantOpt}
+              checked={isChecked}
+              onChange={handleChangeVariant}
+            />
+            <label htmlFor={variantOpt}>{variantOpt}</label>
+          </div>
+        )
+      })}
+
+      <label htmlFor="weight">
+        Weight: {weight}
+      </label>
+      <input
+        type="range"
+        id="weight"
+        name="weight"
+        min="10" max="100" step="10"
+        value={weight}
+        onChange={handleChangeWeight}
+      />
+
+      <ValuesContainer
+        color={color}
+        variant={variant}
+        weight={weight}
+      />
     </div>
   );
 }
