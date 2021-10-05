@@ -1,21 +1,20 @@
 import React from 'react';
-import { colors } from 'spoton-lib';
 
 const colorsArr = [
-    //$base50: #77819c;
-    colors.base50,
-    //$primary50: #1769ff;
-    colors.primary50,
-    //$informative50: #705cd6;
-    colors.informative50,
-    //$success50: #00ab4f;
-    colors.success50,
-    //$warning50: #ffc043;
-    colors.warning50,
-    //$danger50: #f73e3c;
-    colors.danger50,
-    //$loyalty50: #cc9a36;
-    colors.loyalty50,
+    // base50,
+    '#77819c',
+    // primary50,
+    '#1769ff',
+    // informative50,
+    '#705cd6',
+    // success50,
+    '#00ab4f',
+    // warning50,
+    '#ffc043',
+    // danger50,
+    '#f73e3c',
+    // loyalty50,
+    '#cc9a36',
 ];
 
 function ColorPicker(props) {
