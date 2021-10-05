@@ -2,9 +2,10 @@ import React, {useState} from 'react';
 import ColorPicker from './ColorPicker';
 import ValuesContainer from './Values';
 import Shades from './Shades';
+import Chroma from './Chroma';
 import './App.css';
 
-const variants = ['shades', 'tints'];
+const variants = ['shades', 'tints', 'all'];
 
 function App() {
   const [color, setColor] = useState('black');
@@ -26,7 +27,7 @@ function App() {
         setColor={setColor}
       />
 
-      <p>Variant:</p>
+      {/*<p>Variant:</p>
       {variants.map(variantOpt => {
         let isChecked = variantOpt === variant;
         return (
@@ -51,18 +52,20 @@ function App() {
         type="range"
         id="weight"
         name="weight"
-        min="10" max="100" step="10"
+        min="5" max="100" step="5"
         value={weight}
         onChange={handleChangeWeight}
-      />
+      />*/}
 
-      <ValuesContainer
+      {<ValuesContainer
         color={color}
         variant={variant}
         weight={weight}
-      />
+      />}
 
-      <Shades color={color} />
+      {/*<Shades color={color} />*/}
+
+      {<Chroma color={color} />}
     </div>
   );
 }

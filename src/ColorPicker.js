@@ -1,11 +1,27 @@
 import React from 'react';
+import { colors } from 'spoton-lib';
 
-const colors = ['black', 'red', 'green', 'blue', 'pink', 'yellow', 'orange', 'purple'];
+const colorsArr = [
+    //$base50: #77819c;
+    colors.base50,
+    //$primary50: #1769ff;
+    colors.primary50,
+    //$informative50: #705cd6;
+    colors.informative50,
+    //$success50: #00ab4f;
+    colors.success50,
+    //$warning50: #ffc043;
+    colors.warning50,
+    //$danger50: #f73e3c;
+    colors.danger50,
+    //$loyalty50: #cc9a36;
+    colors.loyalty50,
+];
 
 function ColorPicker(props) {
     return (
         <ul style={{ display: 'flex', listStyle: 'none' }}>
-            {colors.map(color => {
+            {colorsArr.map(color => {
                 let isSelected = color === props.color;
                 return (
                     <li
@@ -24,6 +40,9 @@ function ColorPicker(props) {
                             type="button"
                             onClick={() => props.setColor(color)}
                         />
+                        {isSelected ? (
+                            <p>{color.toUpperCase()}</p>
+                        ) : null}
                     </li>
                 )
             })}

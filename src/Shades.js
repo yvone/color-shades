@@ -40,7 +40,7 @@ function Shades({color: initialColor}) {
             {shades.map(shade => (
                 <Box
                     key={`Shades-${shade.hex}`}
-                    color={`rgb(${shade.rgb.toString()})`}
+                    color={shade.hex}
                 />
             ))}
         </ul>

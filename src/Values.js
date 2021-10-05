@@ -55,14 +55,23 @@ function ValuesContainer({color, variant = 'shades', weight = 10}) {
 
     if (status === 'idle' || status === 'loading') return <p>Loading...</p>;
 
-    const shades = value[variant](weight);
+    // const shades = value[variant](weight);
+    const shades = [
+        value.tint(90),
+        value.tint(68),
+        value.tint(44),
+        value,
+        value.shade(20),
+        value.shade(40),
+        value.shade(60),
+    ];
 
     return (
         <ul style={{ display: 'flex', listStyle: 'none' }}>
-            {shades.map(shade => (
+            {shades.map((shade, index) => (
                 <Box
-                    key={`Values-${shade.weight}`}
-                    color={`rgb(${shade.rgb.toString()})`}
+                    key={`Values-${shade.weight}-${index}`}
+                    color={shade.hexString()}
                 />
             ))}
         </ul>
